@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "select * from ctrl.table_config where table_id=@{pipeline().parameters.tabled_id}",
+							"value": "select * from ctrl.table_config where table_id=@{pipeline().parameters.table_id}",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
@@ -163,7 +163,7 @@
 				}
 			},
 			{
-				"name": "Landing to Silver",
+				"name": "Bronze to Silver",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
@@ -204,7 +204,7 @@
 				"type": "Script",
 				"dependsOn": [
 					{
-						"activity": "Landing to Silver",
+						"activity": "Bronze to Silver",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -227,7 +227,7 @@
 						{
 							"type": "Query",
 							"text": {
-								"value": "update ctrl.audit_log \nset status='FAILED',end_time=SYSUTCDATETIME()\nwhere adf_run_id='@{pipeline().parameters.adf_run_id}' and table_id=@{item().table_id}",
+								"value": "update ctrl.audit_log \nset status='SUCCESS',end_time=SYSUTCDATETIME(),records_written=@{activity('Bronze to Silver').output.runOutput}\nwhere adf_run_id='@{pipeline().parameters.adf_run_id}' and table_id=@{pipeline().parameters.table_id};",
 								"type": "Expression"
 							}
 						}
@@ -237,7 +237,7 @@
 			}
 		],
 		"parameters": {
-			"tabled_id": {
+			"table_id": {
 				"type": "int",
 				"defaultValue": 1
 			},
