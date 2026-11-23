@@ -72,6 +72,10 @@
 								},
 								"waitOnCompletion": true,
 								"parameters": {
+									"table_id": {
+										"value": "@activity('Read Source Tables List').output.value",
+										"type": "Expression"
+									},
 									"adf_run_id": {
 										"value": "@pipeline().parameters.adf_run_id",
 										"type": "Expression"
@@ -155,7 +159,7 @@
 			},
 			"adf_run_id": {
 				"type": "string",
-				"defaultValue": "a3"
+				"defaultValue": "a4"
 			}
 		},
 		"variables": {
