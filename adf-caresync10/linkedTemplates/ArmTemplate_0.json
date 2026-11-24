@@ -609,7 +609,7 @@
 				"parameters": {
 					"table_id": {
 						"type": "int",
-						"defaultValue": 1
+						"defaultValue": 10
 					},
 					"adf_run_id": {
 						"type": "string",
@@ -784,7 +784,7 @@
 										"waitOnCompletion": true,
 										"parameters": {
 											"table_id": {
-												"value": "@activity('Read Source Tables List').output.value[0].table_id",
+												"value": "@item().table_id",
 												"type": "Expression"
 											},
 											"adf_run_id": {
@@ -873,7 +873,7 @@
 					},
 					"adf_run_id": {
 						"type": "string",
-						"defaultValue": "a4"
+						"defaultValue": "a9"
 					}
 				},
 				"variables": {
