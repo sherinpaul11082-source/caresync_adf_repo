@@ -73,7 +73,7 @@
 								"waitOnCompletion": true,
 								"parameters": {
 									"table_id": {
-										"value": "@{activity('Read Source Tables List').output.value[0].table_id}",
+										"value": "@item().table_id",
 										"type": "Expression"
 									},
 									"adf_run_id": {
