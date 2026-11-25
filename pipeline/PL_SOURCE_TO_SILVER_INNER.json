@@ -432,14 +432,18 @@
 												"folder": {
 													"value": "@activity('Read Table Details').output.value[0].source_path",
 													"type": "Expression"
-												}
+												},
+												"container": "source"
 											}
 										}
 									],
 									"outputs": [
 										{
 											"referenceName": "DS_ADLS_Parquet",
-											"type": "DatasetReference"
+											"type": "DatasetReference",
+											"parameters": {
+												"folder": "landing"
+											}
 										}
 									]
 								}
