@@ -418,12 +418,9 @@
 											}
 										},
 										"sink": {
-											"type": "ParquetSink",
+											"type": "BinarySink",
 											"storeSettings": {
 												"type": "AzureBlobFSWriteSettings"
-											},
-											"formatSettings": {
-												"type": "ParquetWriteSettings"
 											}
 										},
 										"enableStaging": false
@@ -443,14 +440,14 @@
 									],
 									"outputs": [
 										{
-											"referenceName": "DS_ADLS_Parquet",
+											"referenceName": "DS_Csv_Binary",
 											"type": "DatasetReference",
 											"parameters": {
-												"container": "landing",
 												"folder": {
 													"value": "@concat(\n    activity('Read Table Details').output.value[0].source_system,\n    '/',activity('Read Table Details').output.value[0].source_table_name,\n    '/',variables('start_time')\n)",
 													"type": "Expression"
-												}
+												},
+												"container": "landing"
 											}
 										}
 									]
