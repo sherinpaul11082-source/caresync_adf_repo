@@ -147,6 +147,16 @@
 								],
 								"scriptBlockExecutionTimeout": "02:00:00"
 							}
+						},
+						{
+							"name": "Update pipeline as failed",
+							"type": "Fail",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"message": "Inner pipeline failed",
+								"errorCode": "500"
+							}
 						}
 					]
 				}
