@@ -1,0 +1,12 @@
+{
+	"name": "adf-caresync10",
+	"properties": {
+		"globalParameters": {
+			"email_receipent": {
+				"type": "string",
+				"value": "sherinazpractice@gmail.com"
+			}
+		}
+	},
+	"location": "centralindia"
+}
